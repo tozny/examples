@@ -11,15 +11,18 @@ We have kept this sample to minimum functionality. However the UserManager in OI
 library has many useful features for authenticating via popups, logging out, and
 getting user info. Check out the [wiki](https://github.com/IdentityModel/oidc-client-js/wiki) and [samples](https://github.com/IdentityModel/oidc-client-js/tree/dev/sample/public) in the Github repo.
 
+For a complete walkthrough of how to use this example app in combination with TozID to enable Single Sign On, read the [demo doc](./TozIDPoweredOIDCImplicitFlowThirdPartySSO).
+
 ## Setup
 In order to run this sample you need to setup a TozID realm using your Tozny developer account, along with creating an OpenId Connect (OIDC) client
 application in the TozId Realm Admin portal of the created realm.
 
 If you don't have a Tozny developer account [you can sign up here](https://www.dashboard.tozny.com/register).
 
-Clone this repo and then update <b>/javascripts/main.js</b>  `TOZID_CLIENT_ID` variable with the <b>client_id</b> you obtained from TozID when setting up the OIDC application, along with the `TOZID_HOSTNAME` variable with the location of the TozID instance your client application is a part of (for most cases this will be `https://id.tozny.com`).
+Clone this repo and then update the <b>/javascripts/main.js</b> `TOZID_CLIENT_ID` variable with the <b>client_id</b> you obtained from TozID when setting up the OIDC application, the `TOZID_REALM_NAME` with the lowercased name of your realm, and the `TOZID_HOSTNAME` variable with the location of the TozID instance your client application is a part of (for most cases this will be `https://id.tozny.com`).
 
 ```js
+const TOZID_REALM_NAME = 'example';
 const TOZID_CLIENT_ID = 'demo';
 const TOZID_HOSTNAME = 'https://id.tozny.com';
 ```
