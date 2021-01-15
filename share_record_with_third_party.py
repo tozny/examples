@@ -1,6 +1,6 @@
 import e3db
 
-token = '9579d32bdd92ff16e10cc400fd555b057fe02160d2e8a7beea42e4fcf86b01d6'
+token = 'XXXXYourToznyClientRegistrationTokenHereXXXXX'
 client_name = 'Sally'
 
 public_key, private_key = e3db.Client.generate_keypair()
@@ -37,4 +37,4 @@ print(record)
 
 #grant share operation
 record_type = 'contact'
-client.share(record_type, 'b08ddc06-2b8b-4d0d-adb6-e0589610a05b')
+client.share(record_type, 'tozny-client-id-of-the-third-party-you-want-share-with')
