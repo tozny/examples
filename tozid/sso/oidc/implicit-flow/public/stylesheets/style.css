@@ -20,6 +20,21 @@ a {
   background-color: #4682b4;
 }
 
+.big-red {
+  background-color: red;
+  color: black;
+  padding: 10px;
+  width: 300px;
+  height: 150px;
+  border-radius: 35px;
+  line-height:150px;
+  font-size: large;
+}
+
+.big-red:hover {
+  background-color: darkred;
+}
+
 input {
   width: 300px;
 }
