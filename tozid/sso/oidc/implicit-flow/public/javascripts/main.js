@@ -41,7 +41,8 @@ function redirectToLogin(e) {
 function processLoginResponse() {
   mgr.signinRedirectCallback().then(function(user) {
       document.getElementById("loginResult").innerHTML = '<h3>Success</h3><pre><code>' + JSON.stringify(user, null, 2) + '</code></pre>'
-      maybeBuildAdminSection(user.profile)
+      const token = window.jwt_decode(user.access_token)
+      maybeBuildAdminSection(token)
 
   }).catch(function(err) {
       console.log(err);
@@ -51,14 +52,13 @@ function processLoginResponse() {
 //
 // Update the admin section if the provided profile has an "admin" role
 //
-function maybeBuildAdminSection(profile) {
-    let roles = profile.realm_access?.roles;
+function maybeBuildAdminSection(token) {
+    let roles = token.realm_access?.roles;
     if (Array.isArray(roles) && roles.includes("admin")) {
         console.log(roles)
         document.getElementById("adminOnly").innerHTML = '<p><a class="btn big-red" id="adminButton">ADMIN ONLY</a></p>'
         document.getElementById("adminButton").addEventListener("click", popUpAlertAdmin, false);
     } else {
-        console.log(profile.realm_access)
         document.getElementById("adminOnly").innerHTML = '<h3>nothing to see here</h3>'
     }
 }
