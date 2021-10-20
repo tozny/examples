@@ -22,9 +22,10 @@ If you don't have a Tozny developer account [you can sign up here](https://www.d
 Clone this repo and then update the <b>/javascripts/main.js</b> `TOZID_CLIENT_ID` variable with the <b>client_id</b> you obtained from TozID when setting up the OIDC application, the `TOZID_REALM_NAME` with the lowercased name of your realm, and the `TOZID_HOSTNAME` variable with the location of the TozID instance your client application is a part of (for most cases this will be `https://id.tozny.com`).
 
 ```js
-const TOZID_REALM_NAME = 'example';
-const TOZID_CLIENT_ID = 'demo';
-const TOZID_HOSTNAME = 'https://id.tozny.com';
+const TOZID_REALM_NAME = "example";
+const TOZID_CLIENT_ID = "demo";
+const TOZID_HOSTNAME = "https://id.tozny.com";
+const TOZID_ROLE_NAME = "admin";
 ```
 
 Note that with the Implicit flow the **client_secret** is not required.
