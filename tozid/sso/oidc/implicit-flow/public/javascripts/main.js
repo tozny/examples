@@ -6,7 +6,7 @@ Oidc.Log.logger = console;
 Oidc.Log.level = Oidc.Log.INFO;
 
 var settings = {
-  authority: `${TOZID_HOSTNAME}/auth/realms/${TOZID_REALM_NAME}/.well-known/openid-configuration`,
+  authority: `${TOZID_HOSTNAME}/auth/realms/${TOZID_REALM_NAME.toLowerCase()}/.well-known/openid-configuration`,
   client_id: TOZID_CLIENT_ID,
   redirect_uri: window.location.origin,
   response_type: "id_token token",

@@ -14,19 +14,26 @@ getting user info. Check out the [wiki](https://github.com/IdentityModel/oidc-cl
 For a complete walkthrough of how to use this example app in combination with TozID to enable Single Sign On, read the [demo doc](./TozIDPoweredOIDCImplicitFlowThirdPartySSO).
 
 ## Setup
+This repo contains two ways to run the example. One runs it locally in a node server and a hardcoded configuration file. The other will build it with the configuration set from environment variables.
+
 In order to run this sample you need to setup a TozID realm using your Tozny developer account, along with creating an OpenId Connect (OIDC) client
 application in the TozId Realm Admin portal of the created realm.
 
 If you don't have a Tozny developer account [you can sign up here](https://www.dashboard.tozny.com/register).
 
-Clone this repo and then update the <b>/javascripts/config.js</b> `TOZID_CLIENT_ID` variable with the <b>client_id</b> you obtained from TozID when setting up the OIDC application, the `TOZID_REALM_NAME` with the lowercased name of your realm, and the `TOZID_HOSTNAME` variable with the location of the TozID instance your client application is a part of (for most cases this will be `https://id.tozny.com`).
+### Getting code
 
-```js
-window.TOZID_REALM_NAME = "example";
-window.TOZID_CLIENT_ID = "demo";
-window.TOZID_HOSTNAME = "https://id.tozny.com";
-window.TOZID_ROLE_NAME = "admin";
-```
+Clone this repo and run `npm install`.
+
+### Configuring the application
+
+This app requires you to configure a OIDC client application in TozID's realm admin dashboard. Follow this instructions [here](TozIDPoweredOIDCImplicitFlowThirdPartySSO.pdf).
+
+After configuring the realm, you must configure this repo's code to be able to speak to the realm. These are the variables you will need:
+* `TOZID_REALM_NAME` - the name of your realm
+* `TOZID_CLIENT_ID` - the client_id of the client you created in the TozID realm
+* `TOZID_HOSTNAME` - the location of the TozID instance, most likely `https://id.tozny.com`
+* `TOZID_ROLE_NAME` - the name of the role that controls whether or not you see the big red button!
 
 Note that with the Implicit flow the **client_secret** is not required.
 
@@ -35,16 +42,28 @@ location that the sample is running on. You need to make sure that
 this matches what you specified as the Redirect Uri when you
 setup your OIDC app connector in the TozId Realm Admin portal.
 
-## Run
-This sample uses node to serve up the single home page.
+### Running as local server
 
-From the command line run
-```bash
-> npm install
-> npm start
+Set your configuration directly in the [config.js](public/javascripts/config.js).
+
+Run the server with:
+```
+npm start
 ```
 
-### Local testing
-By default these samples will run on `http://localhost:3000`.
+Your application will be running at `http://localhost:3000`.
 
 You will need to add your callback url (e.g. `http://localhost:3000`) to the list of approved **Redirect URIs** for your OIDC client application via the TozID Realm Admin portal the client application is located in.
+
+### Building & hosting externally
+
+This application can also be compiled into pure HTML/CSS/JS for hosting externally.
+
+In this case, the configuration comes from environment variables. See the example env required for building.
+
+After your `.env` is setup, run the build command:
+```
+npm run build
+```
+
+Your ready-for-deployment files will be located in `build/`.
