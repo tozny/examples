@@ -13,6 +13,8 @@ getting user info. Check out the [wiki](https://github.com/IdentityModel/oidc-cl
 
 For a complete walkthrough of how to use this example app in combination with TozID to enable Single Sign On, read the [demo doc](./TozIDPoweredOIDCImplicitFlowThirdPartySSO).
 
+This doc can be edited and re-exported as a PDF from [Google Drive](https://docs.google.com/document/d/1mQNwbp2_3g0UdxBziSV5rpbFERV2HXi_om27kDwlPw8/edit)
+
 ## Setup
 This repo contains two ways to run the example. One runs it locally in a node server and a hardcoded configuration file. The other will build it with the configuration set from environment variables.
 
@@ -61,9 +63,15 @@ This application can also be compiled into pure HTML/CSS/JS for hosting external
 
 In this case, the configuration comes from environment variables. See the example env required for building.
 
-After your `.env` is setup, run the build command:
-```
+After your [`.env`](example.env)) is setup, run the build command (if you haven't run `npm install` previously you will need to do so now):
+
+
+```bash
 npm run build
 ```
 
 Your ready-for-deployment files will be located in `build/`.
+
+These files should then be uploaded to the s3 bucket `tozny-pam-client-demo` (your upload will essentially be a "new deployment" and overwrite the previous version) in the New Dev AWS account (ID: 518519311314)
+
+Once uploaded you can then use the the deployed application by opening your browser to the [s3 hosted "website" for the bucket](http://tozny-pam-client-demo.s3-website-us-west-2.amazonaws.com)
